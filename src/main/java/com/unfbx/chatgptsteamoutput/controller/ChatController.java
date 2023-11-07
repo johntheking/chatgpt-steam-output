@@ -5,8 +5,11 @@ import com.unfbx.chatgpt.exception.BaseException;
 import com.unfbx.chatgpt.exception.CommonError;
 import com.unfbx.chatgptsteamoutput.controller.request.ChatRequest;
 import com.unfbx.chatgptsteamoutput.controller.response.ChatResponse;
+import com.unfbx.chatgptsteamoutput.entity.ChatDetail;
+import com.unfbx.chatgptsteamoutput.service.ChatDetailService;
 import com.unfbx.chatgptsteamoutput.service.SseService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -57,7 +60,7 @@ public class ChatController {
         return sseService.sseChat(uid, chatRequest);
     }
 
-    /**
+    /**ChatCompletion.Model.GPT_3_5_TURBO.getName()
      * 关闭连接
      *
      * @param headers
@@ -93,5 +96,17 @@ public class ChatController {
         return uid;
     }
 
-
+    @Autowired
+    private ChatDetailService chatDetailService;
+    @GetMapping("/test")
+    public String test() {
+        ChatDetail chatDetail = new ChatDetail();
+        chatDetail.setChatInfoId(123L);
+        chatDetail.setCount(1L);
+        chatDetail.setAnswer("good");
+        chatDetail.setQuestion("how are u?");
+        chatDetail.setStatus(2);
+        chatDetailService.saveChatDetail(chatDetail);
+        return "websocket.html";
+    }
 }

@@ -115,7 +115,7 @@ public class SseServiceImpl implements SseService {
         ChatCompletion completion = ChatCompletion
                 .builder()
                 .messages(messages)
-                .model(ChatCompletion.Model.GPT_3_5_TURBO.getName())
+                .model(chatRequest.getModel())
                 .build();
         openAiStreamClient.streamChatCompletion(completion, openAIEventSourceListener);
         LocalCache.CACHE.put("msg" + uid, JSONUtil.toJsonStr(messages), LocalCache.TIMEOUT);

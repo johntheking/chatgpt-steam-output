@@ -16,4 +16,7 @@ public class ChatResponse {
      */
     @JsonProperty("question_tokens")
     private long questionTokens = 0;
+
+    @JsonProperty("answer")
+    private String answer;
 }

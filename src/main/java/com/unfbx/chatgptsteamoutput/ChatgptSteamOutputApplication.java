@@ -5,6 +5,7 @@ import com.unfbx.chatgpt.function.KeyRandomStrategy;
 import com.unfbx.chatgpt.interceptor.OpenAILogger;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2023-02-28
  */
 @SpringBootApplication
+@MapperScan("com.unfbx.chatgptsteamoutput.mapper")
 public class ChatgptSteamOutputApplication {
 
     @Value("${chatgpt.apiKey}")

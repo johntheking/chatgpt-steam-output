@@ -60,7 +60,7 @@ public class ChatController {
         return sseService.sseChat(uid, chatRequest);
     }
 
-    /**ChatCompletion.Model.GPT_3_5_TURBO.getName()
+    /**
      * 关闭连接
      *
      * @param headers
